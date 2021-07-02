@@ -22,7 +22,7 @@ define( __NAMESPACE__ . '\URL', plugin_dir_url( __FILE__ ) );
 /**
  * Minimum Vimeotheque version required by the add-on
  */
-define( 'ADDON_PLUGIN_COMPAT', '2.0' );
+define( 'ADDON_PLUGIN_COMPAT', '2.1.2' );
 
 /**
  * Check plugin compatibility
