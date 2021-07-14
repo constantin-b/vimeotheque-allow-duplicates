@@ -22,7 +22,7 @@ define( __NAMESPACE__ . '\URL', plugin_dir_url( __FILE__ ) );
 /**
  * Minimum Vimeotheque version required by the add-on
  */
-define( 'ADDON_PLUGIN_COMPAT', '2.1.2' );
+define( __NAMESPACE__ . '\ADDON_PLUGIN_COMPAT', '2.1.2' );
 
 /**
  * Check plugin compatibility
@@ -30,7 +30,7 @@ define( 'ADDON_PLUGIN_COMPAT', '2.1.2' );
 function compatibility_check(){
 	if( !defined( 'VIMEOTHEQUE_VERSION' ) ){
 		add_action( 'admin_notices', __NAMESPACE__ . '\no_plugin' );
-	} elseif( !version_compare( VIMEOTHEQUE_VERSION, ADDON_PLUGIN_COMPAT, '>=' ) ){
+	} elseif( !version_compare( VIMEOTHEQUE_VERSION, namespace\ADDON_PLUGIN_COMPAT, '>=' ) ){
 		add_action( 'admin_notices', __NAMESPACE__ . '\fail_version' );
 	} elseif ( did_action( 'vimeotheque_loaded' ) ){
 		require_once namespace\PATH . 'includes/libs/plugin.class.php';
@@ -47,7 +47,7 @@ function fail_version(){
 	$message = sprintf(
 		esc_html__( '%s requires Vimeotheque version %s+. Because you are using an earlier version, the plugin is currently NOT RUNNING.', 'vimeotheque-allow-duplicates' ),
 		'Vimeotheque Import Duplicates',
-		ADDON_PLUGIN_COMPAT
+		namespace\ADDON_PLUGIN_COMPAT
 	);
 	$html_message = sprintf( '<div class="error">%s</div>', wpautop( $message ) );
 	echo wp_kses_post( $html_message );
