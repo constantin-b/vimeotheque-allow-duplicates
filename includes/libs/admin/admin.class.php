@@ -62,22 +62,21 @@ class Admin {
 	 * @return array
 	 */
 	public function allow_duplicates( $found_duplicates ){
+        // depending on the view used (grid or list), the import data is under a different POST key
+	    $vars = isset( $_POST['model']['import'] ) ? $_POST['model']['import'] : $_POST;
 
-	    if( isset( $_POST['model']['import']['import_duplicates'] ) ){
+	    if( isset( $vars['import_duplicates'] ) && $found_duplicates ){
 
-	        if( $found_duplicates ){
-
-	            foreach ( $found_duplicates as $video_id => $post_ids ){
-		            Helper::debug_message(
-		                sprintf(
-                            'Importing duplicate post for video ID "%s". Found existing post IDs: %s.',
-                            $video_id,
-                            implode( ', ', $post_ids )
-                        )
-		            );
-                }
-
+            foreach ( $found_duplicates as $video_id => $post_ids ){
+                Helper::debug_message(
+                    sprintf(
+                        'Importing duplicate post for video ID "%s". Found existing post IDs: %s.',
+                        $video_id,
+                        implode( ', ', $post_ids )
+                    )
+                );
             }
+
             // reset the found duplicates array since they are allowed
 	        $found_duplicates = [];
         }
