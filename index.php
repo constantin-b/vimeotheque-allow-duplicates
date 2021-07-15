@@ -4,7 +4,7 @@
  Plugin URI: https://vimeotheque.com
  Description: Add-on plugin for plugin Vimeotheque which allows the option to import duplicate posts.
  Author: CodeFlavors
- Version: 1.0.alpha-1
+ Version: 1.0.alpha-2
  Author URI: https://codeflavors.com
  */
 
@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-define( __NAMESPACE__ . '\VERSION', '1.0.alpha-1' );
+define( __NAMESPACE__ . '\VERSION', '1.0.alpha-2' );
 define( __NAMESPACE__ . '\FILE', __FILE__ );
 define( __NAMESPACE__ . '\PATH', plugin_dir_path( __FILE__ ) );
 define( __NAMESPACE__ . '\URL', plugin_dir_url( __FILE__ ) );
